@@ -63,4 +63,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="cz_wartosc" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="f4f3a8fc-012a-4b68-a2ff-223a286df865" ChangeDateTime="10/19/2018 13:52:46">
+    <Property Name="ElementName" Value="[dbo].[del_log].[id_tabeli]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[del_log]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ta_id" />
+  </Operation>
 </Operations>
