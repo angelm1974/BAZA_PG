@@ -7,4 +7,46 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="bc_Id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="5b26b776-87ba-4fc3-8c91-d299aa9b609c" ChangeDateTime="10/19/2018 13:27:33">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[bc_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="de_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b492d2d-2f05-4194-8283-4fe652f8c914" ChangeDateTime="10/19/2018 13:32:21">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[de_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cz_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0472f996-9a5d-46b2-aab1-90f63e4af587" ChangeDateTime="10/19/2018 13:32:36">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[tabela]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="tabcz_lbl_element" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="061345bf-7dcb-4288-a904-b4104b29a2e3" ChangeDateTime="10/19/2018 13:32:48">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[id_tabeli]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cz_nazwa" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="43232898-69a7-498a-acab-e554522e78f2" ChangeDateTime="10/19/2018 13:32:59">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[data_kasowania]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cz_ilszt" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f712da6b-cff3-4178-a8a5-00ca179032f5" ChangeDateTime="10/19/2018 13:33:11">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[skasowal]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cz_wartosc" />
+  </Operation>
 </Operations>
