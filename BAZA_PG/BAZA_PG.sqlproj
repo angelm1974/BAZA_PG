@@ -63,6 +63,7 @@
     <Build Include="Milena.sql" />
     <Build Include="Krzysiek.sql" />
     <Build Include="Marcin.sql" />
+    <Build Include="Filip.sql" />
     <Build Include="Daniel.sql" />
   </ItemGroup>
   <ItemGroup>
