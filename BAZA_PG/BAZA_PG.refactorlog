@@ -7,4 +7,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="bc_Id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="ed7ad46e-b889-4f41-919a-77170f880848" ChangeDateTime="10/19/2018 13:29:28">
+    <Property Name="ElementName" Value="[dbo].[delegacje].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[delegacje]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_delegacje" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7bf54c5f-e271-4b77-aa2d-384e8c11d2e8" ChangeDateTime="10/19/2018 13:34:17">
+    <Property Name="ElementName" Value="[dbo].[delegacje].[ciez_jedn]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[delegacje]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ciez_sztuki" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8757504d-2074-4357-bf5a-efe4e415400f" ChangeDateTime="10/19/2018 13:43:39">
+    <Property Name="ElementName" Value="[dbo].[delegacje].[id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[delegacje]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_kontrakt" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c42a9db7-3417-43c0-96d2-ed853cef85a5" ChangeDateTime="10/19/2018 13:51:40">
+    <Property Name="ElementName" Value="[dbo].[detale].[Id_delegacje]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[detale]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_detale" />
+  </Operation>
 </Operations>
