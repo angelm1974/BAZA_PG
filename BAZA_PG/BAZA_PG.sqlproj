@@ -60,9 +60,5 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table2.sql" />
-    <Build Include="Igor.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="BAZA_PG.refactorlog" />
   </ItemGroup>
 </Project>
