@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BAZA_PG", "BAZA_PG\BAZA_PG.sqlproj", "{AA297164-DA08-43F5-A9DD-CCCCE65FC97E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA297164-DA08-43F5-A9DD-CCCCE65FC97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA297164-DA08-43F5-A9DD-CCCCE65FC97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA297164-DA08-43F5-A9DD-CCCCE65FC97E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AA297164-DA08-43F5-A9DD-CCCCE65FC97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA297164-DA08-43F5-A9DD-CCCCE65FC97E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA297164-DA08-43F5-A9DD-CCCCE65FC97E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCC69C08-CCD0-43F3-A43E-16A93F902336}
+	EndGlobalSection
+EndGlobal
