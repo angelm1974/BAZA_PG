@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[biblioteka_czesci]
+CREATE TABLE [dbo].[czesci_zamienne]
 (
 	[cz_Id] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
     [tabcz_lbl_element] VARCHAR(200) NULL, 
