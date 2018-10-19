@@ -62,6 +62,7 @@
     <Build Include="Table2.sql" />
     <Build Include="Milena.sql" />
     <Build Include="Krzysiek.sql" />
+    <Build Include="Marcin.sql" />
     <Build Include="Filip.sql" />
   </ItemGroup>
 </Project>
