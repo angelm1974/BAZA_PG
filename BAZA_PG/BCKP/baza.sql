@@ -325,8 +325,10 @@ ALTER FUNCTION public.ifo(boolean, integer, integer) OWNER TO postgres;
 
 CREATE FUNCTION public.kontrah(text) RETURNS text
     LANGUAGE sql
-    AS $_$select CAST (nazwa as TEXT) 
-From kontrahent2 
+    AS $_$select CAST (nazwa as TEXT) 
+
+From kontrahent2 
+
 Where znak = $1;$_$;
 
 
@@ -888,8 +890,10 @@ ALTER FUNCTION public.numer_detalu(integer) OWNER TO postgres;
 
 CREATE FUNCTION public.numer_kontraktu(text) RETURNS integer
     LANGUAGE sql
-    AS $_$select max (numer) 
-From kontrakt2 
+    AS $_$select max (numer) 
+
+From kontrakt2 
+
 Where znak = $1;$_$;
 
 
@@ -932,8 +936,10 @@ ALTER FUNCTION public.numer_robo_plan() OWNER TO postgres;
 
 CREATE FUNCTION public.numer_rysunku(integer) RETURNS integer
     LANGUAGE sql
-    AS $_$select max (numer_rys) 
-From rysunki2
+    AS $_$select max (numer_rys) 
+
+From rysunki2
+
 Where id_zespol = $1;$_$;
 
 
@@ -946,8 +952,10 @@ ALTER FUNCTION public.numer_rysunku(integer) OWNER TO postgres;
 
 CREATE FUNCTION public.numer_zespolu(integer) RETURNS integer
     LANGUAGE sql
-    AS $_$select max (numer) 
-From zespoly 
+    AS $_$select max (numer) 
+
+From zespoly 
+
 Where id_kontrakt = $1;$_$;
 
 
@@ -1284,7 +1292,8 @@ ALTER FUNCTION public.rys_lbl(integer) OWNER TO postgres;
 
 CREATE FUNCTION public.rysunek_lbl(integer) RETURNS text
     LANGUAGE sql
-    AS $_$
+    AS $_$
+
 SELECT cast ( (rys_label || ' [ ' || nazwa_rysunku || ' ] ') as Text) FROM rysunki2 WHERE id = $1;$_$;
 
 
@@ -1788,7 +1797,8 @@ CREATE FUNCTION public.test_material() RETURNS trigger
  mat material%ROWTYPE;
 
 BEGIN
-if new.nazwa  IS NULL OR length(trim(new.nazwa )) <1 THEN 
+if new.nazwa  IS NULL OR length(trim(new.nazwa )) <1 THEN 
+
 RAISE EXCEPTION ' Pole [Nazwa materiału] ma nieprawidłową wartość !!! ' ;
 END IF;
 
@@ -1965,8 +1975,10 @@ ALTER FUNCTION public.wyplaty_opis_pracy(integer, integer, integer, character va
 
 CREATE FUNCTION public.zespol_lbl(integer) RETURNS text
     LANGUAGE sql
-    AS $_$select CAST (zesp_label as TEXT) 
-From zespoly 
+    AS $_$select CAST (zesp_label as TEXT) 
+
+From zespoly 
+
 Where id = $1;$_$;
 
 
