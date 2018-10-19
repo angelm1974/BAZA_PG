@@ -57,21 +57,5 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="BCKP" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="Table2.sql" />
-    <Build Include="Milena.sql" />
-    <Build Include="Krzysiek.sql" />
-    <Build Include="Marcin.sql" />
-    <Build Include="Igor.sql" />
-    <Build Include="Grzegorz_1.sql" />
-    <Build Include="Filip.sql" />
-    <Build Include="Daniel.sql" />
-    <Build Include="Roman.sql" />
-    <Build Include="BCKP\baza.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="BAZA_PG.refactorlog" />
   </ItemGroup>
 </Project>
