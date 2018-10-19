@@ -64,5 +64,10 @@
     <Build Include="Krzysiek.sql" />
     <Build Include="Marcin.sql" />
     <Build Include="Grzegorz_1.sql" />
+    <Build Include="Filip.sql" />
+    <Build Include="Daniel.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="BAZA_PG.refactorlog" />
   </ItemGroup>
 </Project>
