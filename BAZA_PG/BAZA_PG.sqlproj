@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table2.sql" />
-    <Build Include="Grzegorz.sql" />
+    <Build Include="Milena.sql" />
+    <Build Include="Krzysiek.sql" />
   </ItemGroup>
 </Project>
