@@ -196,4 +196,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ilsztk" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="1fe4b62d-1851-4b4c-b82b-7e04ff08a94f" ChangeDateTime="11/15/2018 11:52:37">
+    <Property Name="ElementName" Value="[dbo].[Kontrakt].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Kontrakt]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_kontrakt" />
+  </Operation>
 </Operations>
