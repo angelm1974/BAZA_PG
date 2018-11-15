@@ -21,5 +21,7 @@ CREATE TABLE dbo.efekty
     [upd_user] VARCHAR(100) NULL, 
     [del_id] BIGINT NOT NULL, 
     [obiekt] TEXT NULL, 
-    CONSTRAINT [PK_efekty] PRIMARY KEY ([ef_id])
+    CONSTRAINT [PK_efekty] PRIMARY KEY ([ef_id]), 
+    CONSTRAINT [FK_efekty_ToTable] FOREIGN KEY ([id_zespol]) REFERENCES [zespol]([id_zespol]), 
+    CONSTRAINT [FK_efekty_ToTable_1] FOREIGN KEY ([id_kontrakt]) REFERENCES [kontrakt]([id_kontrakt]) 
 );
