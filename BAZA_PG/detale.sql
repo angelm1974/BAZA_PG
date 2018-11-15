@@ -1,7 +1,7 @@
 CREATE TABLE [dbo].[detale]
 (
 	[Id_detale] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
-    [id_rysunki] BIGINT NOT NULL, 
+    [id_rysunki] BIGINT foreign key references Rysunki(id_rysunki) NOT NULL,
     [numer] INT NOT NULL, 
     [material] VARCHAR(20) NOT NULL, 
     [wsad] VARCHAR(25) NOT NULL, 
@@ -13,8 +13,8 @@ CREATE TABLE [dbo].[detale]
     [ciez_sztuki] FLOAT NULL, 
     [ciez_calkowity] FLOAT NULL, 
     [cena] FLOAT NULL, 
-    [id_kontrakt] BIGINT NOT NULL, 
-    [id_zespol] BIGINT NOT NULL, 
+    [id_kontrakt] BIGINT foreign key references Kontrakt(id_kontrakt) NOT NULL, 
+    [id_zespol] BIGINT foreign key references zespol(id_zespol) NOT NULL, 
     [rozliczony boolean] BIT NULL DEFAULT 0, 
     [cena_rozl] FLOAT NULL DEFAULT 0, 
     [stan_materialu] SMALLINT NULL DEFAULT 0, 
