@@ -1,4 +1,4 @@
 ﻿CREATE TABLE [dbo].[sub_branza]
 (
-	[sb_id] INT NOT NULL PRIMARY KEY
+	[sb_id] BIGINT NOT NULL PRIMARY KEY
 )

@@ -10,5 +10,6 @@ CREATE TABLE [dbo].[biblioteka_czesci]
     [sb_id] BIGINT NULL, 
     [sortowanie] VARCHAR(3) NULL, 
     [data_zmiany_ceny] DATE NULL, 
-    [zmieniajacy] VARCHAR(50) NULL
+    [zmieniajacy] VARCHAR(50) NULL, 
+    CONSTRAINT [FK_biblioteka_czesci_ToTable] FOREIGN KEY ([sb_id]) REFERENCES [sub_branza]([sb_id])
 )
