@@ -1,7 +1,7 @@
 CREATE TABLE [dbo].[doradztwo_nowy]
 (
 	[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
-    [ko_kontrakt] BIGINT NOT NULL, 
+    [ko_kontrakt] BIGINT foreign key references Kontrakt(id_kontrakt) NOT NULL, 
     [nr_raty] VARCHAR(120) NULL, 
     [opis] TEXT NULL, 
     [rozliczane] NUMERIC(10, 2) NULL, 
