@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[zespol]
+(
+	[id_zespol] BIGINT NOT NULL PRIMARY KEY IDENTITY
+)
