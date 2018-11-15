@@ -78,6 +78,7 @@
     <Build Include="efekty.sql" />
     <Build Include="firma.sql" />
     <Build Include="Kontrakt.sql" />
+    <Build Include="zespol.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BAZA_PG.refactorlog" />
