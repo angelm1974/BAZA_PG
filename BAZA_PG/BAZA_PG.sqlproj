@@ -60,7 +60,6 @@
     <Folder Include="BCKP" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="BCKP\baza.sql" />
     <Build Include="detale_kopia.sql" />
     <Build Include="do_us.sql" />
     <Build Include="dostawcy.sql" />
