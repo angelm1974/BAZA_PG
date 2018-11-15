@@ -23,5 +23,5 @@ CREATE TABLE dbo.efekty
     [obiekt] TEXT NULL, 
     CONSTRAINT [PK_efekty] PRIMARY KEY ([ef_id]), 
     CONSTRAINT [FK_efekty_ToTable] FOREIGN KEY ([id_zespol]) REFERENCES [zespol]([id_zespol]), 
-    CONSTRAINT [FK_efekty_ToTable_1] FOREIGN KEY ([id_kontrakt]) REFERENCES [kontrakt]([id_kontrakt]) 
+    CONSTRAINT [FK_efekty_ToTable_1] FOREIGN KEY ([id_kontrakt]) REFERENCES [Kontrakt]([id_kontrakt]) 
 );
