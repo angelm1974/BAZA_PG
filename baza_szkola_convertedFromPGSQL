@@ -1,0 +1,2700 @@
+USE [master]
+GO
+/****** Object:  Database [baza_szkola]    Script Date: 2018-11-16 17:57:39 ******/
+CREATE DATABASE [baza_szkola]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'baza_szkola', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\baza_szkola.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'baza_szkola_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\baza_szkola_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [baza_szkola] SET COMPATIBILITY_LEVEL = 120
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [baza_szkola].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [baza_szkola] SET ANSI_NULL_DEFAULT ON 
+GO
+ALTER DATABASE [baza_szkola] SET ANSI_NULLS ON 
+GO
+ALTER DATABASE [baza_szkola] SET ANSI_PADDING ON 
+GO
+ALTER DATABASE [baza_szkola] SET ANSI_WARNINGS ON 
+GO
+ALTER DATABASE [baza_szkola] SET ARITHABORT ON 
+GO
+ALTER DATABASE [baza_szkola] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [baza_szkola] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [baza_szkola] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [baza_szkola] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [baza_szkola] SET CURSOR_DEFAULT  LOCAL 
+GO
+ALTER DATABASE [baza_szkola] SET CONCAT_NULL_YIELDS_NULL ON 
+GO
+ALTER DATABASE [baza_szkola] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [baza_szkola] SET QUOTED_IDENTIFIER ON 
+GO
+ALTER DATABASE [baza_szkola] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [baza_szkola] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [baza_szkola] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [baza_szkola] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [baza_szkola] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [baza_szkola] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [baza_szkola] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [baza_szkola] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [baza_szkola] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [baza_szkola] SET RECOVERY FULL 
+GO
+ALTER DATABASE [baza_szkola] SET  MULTI_USER 
+GO
+ALTER DATABASE [baza_szkola] SET PAGE_VERIFY NONE  
+GO
+ALTER DATABASE [baza_szkola] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [baza_szkola] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [baza_szkola] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [baza_szkola] SET DELAYED_DURABILITY = DISABLED 
+GO
+USE [baza_szkola]
+GO
+/****** Object:  Table [dbo].[AspNetRoleClaims]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRoleClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[RoleId] [nvarchar](100) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetRoles]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRoles](
+	[Id] [nvarchar](100) NOT NULL,
+	[Name] [nvarchar](256) NULL,
+	[NormalizedName] [nvarchar](256) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetRolesRules]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRolesRules](
+	[id_rule] [nvarchar](100) NOT NULL,
+	[id_role] [nvarchar](100) NOT NULL,
+	[typDostepu] [int] NOT NULL,
+ CONSTRAINT [PK_AspNetRolesRules] PRIMARY KEY CLUSTERED 
+(
+	[id_rule] ASC,
+	[id_role] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetRule]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[AspNetRule](
+	[id_rule] [nvarchar](100) NOT NULL,
+	[regula] [varchar](50) NOT NULL,
+	[opis] [varchar](500) NULL,
+ CONSTRAINT [PK_AspNetRule] PRIMARY KEY CLUSTERED 
+(
+	[id_rule] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[AspNetRuleUser]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRuleUser](
+	[id_rule] [nvarchar](100) NOT NULL,
+	[id_user] [nvarchar](100) NOT NULL,
+	[typDostepu] [int] NOT NULL,
+ CONSTRAINT [PK_AspNetRuleUser] PRIMARY KEY CLUSTERED 
+(
+	[id_rule] ASC,
+	[id_user] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](100) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUserLogins]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserLogins](
+	[LoginProvider] [nvarchar](128) NOT NULL,
+	[ProviderKey] [nvarchar](128) NOT NULL,
+	[ProviderDisplayName] [nvarchar](max) NULL,
+	[UserId] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY CLUSTERED 
+(
+	[LoginProvider] ASC,
+	[ProviderKey] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserRoles](
+	[UserId] [nvarchar](100) NOT NULL,
+	[RoleId] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUsers]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUsers](
+	[Id] [nvarchar](100) NOT NULL,
+	[UserName] [nvarchar](256) NULL,
+	[NormalizedUserName] [nvarchar](256) NULL,
+	[Email] [nvarchar](256) NULL,
+	[NormalizedEmail] [nvarchar](256) NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar](max) NULL,
+	[SecurityStamp] [nvarchar](max) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+	[PhoneNumber] [nvarchar](max) NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEnd] [datetimeoffset](7) NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+ CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AspNetUserTokens]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserTokens](
+	[UserId] [nvarchar](100) NOT NULL,
+	[LoginProvider] [nvarchar](128) NOT NULL,
+	[Name] [nvarchar](128) NOT NULL,
+	[Value] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[LoginProvider] ASC,
+	[Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[biblioteka_czesci]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[biblioteka_czesci](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_branza] [bigint] NOT NULL,
+	[nazwa] [varchar](100) NOT NULL,
+	[symbol] [varchar](100) NULL,
+	[norma] [varchar](60) NULL,
+	[cena] [float] NULL,
+	[opis] [varchar](max) NULL,
+	[is_subbranza] [int] NULL,
+	[sortowanie] [varchar](3) NULL,
+	[data_zmiany_ceny] [date] NULL,
+	[zmieniajacy] [varchar](50) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[biblioteka_normaliow]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[biblioteka_normaliow](
+	[biblioteka_normaliow_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[parent_id] [bigint] NOT NULL,
+	[typ_elementu] [int] NOT NULL,
+	[nazwa_elementu] [varchar](100) NOT NULL,
+	[symbol] [varchar](100) NULL,
+	[norma] [varchar](100) NULL,
+	[opis] [varchar](max) NULL,
+	[cena] [money] NULL,
+	[data_zmiany_ceny] [date] NULL,
+	[zmieniajacy] [varchar](100) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[branza]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[branza](
+	[id_branza] [bigint] IDENTITY(1,1) NOT NULL,
+	[br_nazwa] [varchar](30) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[ceny_rys]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ceny_rys](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[rodzajrys] [varchar](20) NULL,
+	[cena] [numeric](6, 2) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[czesci_zamienne]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[czesci_zamienne](
+	[cz_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[cz_lbl_element] [varchar](200) NULL,
+	[cz_nazwa] [varchar](200) NULL,
+	[cz_ilszt] [int] NULL,
+	[cz_wartosc] [numeric](10, 2) NULL,
+	[cz_jedn] [varchar](20) NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[del_log]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[del_log](
+	[id_del_log] [bigint] NOT NULL,
+	[tabela] [varchar](30) NULL,
+	[id_tabeli] [bigint] NULL,
+	[data_kasowania] [date] NULL,
+	[skasowal] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[delegacje]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[delegacje](
+	[id_kontrakt] [bigint] IDENTITY(1,1) NOT NULL,
+	[numer] [varchar](100) NULL,
+	[osoba] [varchar](50) NULL,
+	[kwota] [numeric](10, 2) NULL,
+	[id] [int] NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[detale]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[detale](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_rysunki] [bigint] NOT NULL,
+	[numer] [int] NOT NULL,
+	[material] [varchar](20) NOT NULL,
+	[wsad] [varchar](25) NOT NULL,
+	[ilsztuk] [int] NOT NULL,
+	[wymiar_a] [float] NULL,
+	[wymiar_b] [float] NULL,
+	[wymiar_c] [float] NULL,
+	[ciez_jedn] [float] NULL,
+	[ciez_sztuki] [float] NULL,
+	[ciez_calkowity] [float] NULL,
+	[cena] [float] NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[rozliczony] [bit] NULL,
+	[cena_rozl] [float] NULL,
+	[stan_materialu] [smallint] NULL,
+	[pociety] [smallint] NULL,
+	[cena_bufor] [float] NULL,
+	[rodz_kooperacji] [smallint] NULL,
+	[id_rw_detale] [bigint] NULL,
+	[data_ciecia] [date] NULL,
+	[kolejnosc_rw] [int] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[rw_wb] [varchar](max) NULL,
+	[wb_ok] [int] NULL,
+	[kieszen] [varchar](2) NULL,
+	[data_wpl] [date] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[detale_kopia]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[detale_kopia](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_rysunki] [bigint] NOT NULL,
+	[numer] [int] NOT NULL,
+	[material] [varchar](20) NOT NULL,
+	[wsad] [varchar](25) NOT NULL,
+	[ilsztuk] [int] NOT NULL,
+	[wymiar_a] [float] NULL,
+	[wymiar_b] [float] NULL,
+	[wymiar_c] [float] NULL,
+	[ciez_jedn] [float] NULL,
+	[ciez_sztuki] [float] NULL,
+	[ciez_calkowity] [float] NULL,
+	[cena] [float] NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[rozliczony] [bit] NULL,
+	[cena_rozl] [float] NULL,
+	[stan_materialu] [smallint] NULL,
+	[pociety] [smallint] NULL,
+	[cena_bufor] [float] NULL,
+	[rodz_kooperacji] [smallint] NULL,
+	[id_rw_detale] [bigint] NULL,
+	[data_ciecia] [date] NULL,
+	[kolejnosc_rw] [int] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[do_us]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[do_us](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[el_kalkulacji] [varchar](max) NULL,
+	[id_kontrakt] [int] NULL,
+	[flaga] [int] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[doradztwo_nowy]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[doradztwo_nowy](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[nr_raty] [varchar](120) NULL,
+	[opis] [varchar](max) NULL,
+	[rozliczane] [numeric](10, 2) NULL,
+	[wykonane] [numeric](10, 2) NULL,
+	[kiedy] [date] NULL,
+	[kto] [varchar](20) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[data1raty] [date] NULL,
+	[rata1] [numeric](10, 2) NULL,
+	[data2raty] [date] NULL,
+	[rata2] [numeric](10, 2) NULL,
+	[data3raty] [date] NULL,
+	[rata3] [numeric](10, 3) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[dostawcy]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[dostawcy](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[ds_id] [bigint] NOT NULL,
+	[ds_kod] [varchar](10) NULL,
+	[ds_nazwa] [varchar](200) NULL,
+	[ds_przedstawiciel] [varchar](100) NULL,
+	[ds_stanowisko] [varchar](100) NULL,
+	[ds_ulica] [varchar](200) NULL,
+	[ds_nrdomu] [varchar](15) NULL,
+	[ds_nrlokalu] [varchar](15) NULL,
+	[ds_kodpocztowy] [varchar](15) NULL,
+	[ds_miasto] [varchar](100) NULL,
+	[ds_tel] [varchar](50) NULL,
+	[ds_telkom] [varchar](50) NULL,
+	[ds_fax] [varchar](50) NULL,
+	[ds_email] [varchar](100) NULL,
+	[ds_www] [varchar](100) NULL,
+	[ds_nip] [varchar](100) NULL,
+	[ds_kraj] [varchar](100) NULL,
+	[ds_dostawca] [bit] NULL,
+	[ds_kooperant] [bit] NULL,
+	[ds_projektant] [bit] NULL,
+	[ds_info] [text] NULL,
+	[id_log] [nvarchar](100) NULL,
+	[id_dostemp] [nvarchar](100) NULL,
+ CONSTRAINT [PK__dostawcy__3214EC07109E52A2] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[dostawcyHistoria]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[dostawcyHistoria](
+	[id_user] [nvarchar](100) NOT NULL,
+	[id_wpis] [nvarchar](100) NOT NULL,
+	[opis] [varchar](500) NOT NULL,
+	[id_dostawcy] [bigint] NOT NULL,
+ CONSTRAINT [PK_dostawcyHistoria] PRIMARY KEY CLUSTERED 
+(
+	[id_wpis] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[drzewo]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[drzewo](
+	[dr_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[di_dr_did] [bigint] NULL,
+	[dr_parent_id] [bigint] NULL,
+	[bl_element] [varchar](20) NULL,
+	[nazwa] [varchar](100) NULL,
+	[ko_id] [bigint] NULL,
+	[ze_id] [bigint] NULL,
+	[ry_id] [bigint] NULL,
+	[de_id] [bigint] NULL,
+	[tag] [varchar](100) NULL,
+	[ikona] [int] NULL,
+	[il_sztk] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[dr_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[drzewo_rysunki]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[drzewo_rysunki](
+	[id_dr_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[di_dr_did] [bigint] NULL,
+	[id_dr_parent_id] [bigint] NULL,
+	[dr_lbl_element] [varchar](20) NULL,
+	[dr_nazwa] [varchar](100) NULL,
+	[id_kontrakt] [bigint] NULL,
+	[id_zespol] [bigint] NULL,
+	[id_rysunki] [bigint] NULL,
+	[id_detale] [bigint] NULL,
+	[dr_tag] [varchar](100) NULL,
+	[dr_ikona ] [int] NULL,
+	[dr_ilszt] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_dr_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[efekty]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[efekty](
+	[ef_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[id_zespol] [bigint] NULL,
+	[el_kalkulacja] [text] NULL,
+	[wykonawca] [text] NULL,
+	[od_ciez] [text] NULL,
+	[of_wartosc] [numeric](10, 2) NULL,
+	[przew_ciez] [numeric](8, 2) NULL,
+	[przew_wartosc] [numeric](10, 2) NULL,
+	[rozl_ciez] [numeric](8, 2) NULL,
+	[rozl_wartosc] [numeric](10, 2) NULL,
+	[flaga1] [bigint] NULL,
+	[flaga2] [bigint] NULL,
+	[flaga3] [text] NULL,
+	[flagatyp] [bigint] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[obiekt] [text] NULL,
+ CONSTRAINT [PK_efekty] PRIMARY KEY CLUSTERED 
+(
+	[ef_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[historiaZmian]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[historiaZmian](
+	[id_hist] [bigint] NOT NULL,
+	[nazwaTabeli] [varchar](150) NULL,
+	[id_user] [nvarchar](100) NULL,
+	[dataWpisu] [datetime] NULL,
+	[zdarzenie] [nchar](15) NULL,
+	[opis_xml] [xml] NULL,
+	[label] [varchar](220) NULL,
+	[id_rekordu] [varchar](250) NULL,
+	[id_typ_danych] [varchar](50) NULL,
+ CONSTRAINT [PK_historiaZmian] PRIMARY KEY CLUSTERED 
+(
+	[id_hist] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[jednostki]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[jednostki](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[opis] [varchar](20) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[kontrahent2]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[kontrahent2](
+	[znak] [varchar](2) NOT NULL,
+	[nazwa] [varchar](max) NOT NULL,
+	[przedstawiciel] [varchar](max) NULL,
+	[stanowisko] [varchar](max) NULL,
+	[ulica] [varchar](max) NOT NULL,
+	[nrdomu] [varchar](max) NULL,
+	[nrlokalu] [varchar](max) NULL,
+	[kodpoczt] [varchar](max) NULL,
+	[miasto] [varchar](max) NOT NULL,
+	[tel] [varchar](max) NULL,
+	[telkom] [varchar](max) NULL,
+	[fax] [varchar](max) NULL,
+	[email] [varchar](max) NULL,
+	[www] [varchar](max) NULL,
+	[nip] [varchar](max) NULL,
+	[info] [varchar](max) NULL,
+	[kraj] [varchar](max) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[Kontrakt]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Kontrakt](
+	[id_kontrakt] [bigint] IDENTITY(1,1) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_kontrakt] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[kontrakt2]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[kontrakt2](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[znak] [varchar](2) NOT NULL,
+	[numer] [int] NOT NULL,
+	[nrlabel] [varchar](12) NULL,
+	[temat] [varchar](max) NULL,
+	[data] [date] NULL,
+	[datastop] [date] NULL,
+	[osobaodp] [varchar](max) NULL,
+	[info] [varchar](max) NULL,
+	[wartosc] [numeric](10, 2) NULL,
+	[nrfaktury] [varchar](max) NULL,
+	[konieckontr] [int] NOT NULL,
+	[kosztrbg] [numeric](8, 2) NULL,
+	[kosztproj] [numeric](8, 2) NULL,
+	[zlats] [numeric](4, 2) NULL,
+	[zleu] [numeric](4, 2) NULL,
+	[procent_wyplaty] [bigint] NULL,
+	[data_przeliczenia] [date] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[katalog] [varchar](100) NULL,
+	[wartosc_euro] [numeric](10, 2) NULL,
+	[cena_stali] [numeric](5, 2) NULL,
+	[koszt_bledu] [numeric](5, 2) NULL,
+	[rozliczony_status] [bit] NULL,
+	[rozliczony_data] [date] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[kooperacja_bckp]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[kooperacja_bckp](
+	[id_kontrakt] [bigint] NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[numer] [varchar](100) NULL,
+	[tresc] [varchar](100) NULL,
+	[firma] [varchar](50) NULL,
+	[kwota] [numeric](10, 2) NULL,
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[kooperacja2]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[kooperacja2](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[rys_label] [varchar](19) NULL,
+	[opis] [varchar](max) NULL,
+	[wykonawca] [varchar](max) NULL,
+	[faktura] [varchar](50) NULL,
+	[cena_zakladana] [numeric](15, 2) NULL,
+	[cena_ofertowa] [numeric](15, 2) NULL,
+	[cena_rozliczeniowa] [numeric](15, 2) NULL,
+	[rozliczona] [bit] NULL,
+	[komentarz] [varchar](max) NULL,
+	[sztuki] [numeric](15, 2) NULL,
+	[oferta] [date] NULL,
+	[zamowienie] [date] NULL,
+	[termin_wykonania] [date] NULL,
+	[ilroboczogodz] [numeric](15, 2) NULL,
+	[cena_za_szt] [numeric](15, 2) NULL,
+	[koszt_uslugi_of] [numeric](15, 2) NULL,
+	[ocena_jakosci] [varchar](50) NULL,
+	[reklamacja] [varchar](50) NULL,
+	[uwagi] [varchar](max) NULL,
+	[wyslano] [bit] NULL,
+	[wykonano] [bit] NULL,
+	[zapytanie_data] [date] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[kooperacjadok]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[kooperacjadok](
+	[id_kooperacjadok] [bigint] NOT NULL,
+	[id_kontrakt] [int] NOT NULL,
+	[id_zespol] [int] NOT NULL,
+	[wykonawca] [varchar](max) NULL,
+	[opis] [varchar](max) NULL,
+	[faktura] [varchar](50) NULL,
+	[cena_zakladana] [numeric](15, 2) NULL,
+	[cena_ofertowa] [numeric](15, 2) NULL,
+	[cena_rozliczeniowa] [numeric](15, 2) NULL,
+	[rozliczona] [bit] NULL,
+	[komentarz] [varchar](max) NULL,
+	[termin_wykonania] [date] NULL,
+	[uwagi] [varchar](max) NULL,
+	[data1raty] [date] NULL,
+	[rata1] [numeric](10, 2) NULL,
+	[data2raty] [date] NULL,
+	[rata2] [numeric](10, 2) NULL,
+	[data3raty] [date] NULL,
+	[rata3] [numeric](10, 3) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[koszty_ogolne]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[koszty_ogolne](
+	[nazwa] [varchar](40) NOT NULL,
+	[zaplanowane] [numeric](10, 2) NULL,
+	[wykonane] [numeric](10, 2) NULL,
+	[id_kontrakt] [smallint] NOT NULL,
+	[kolejnosc] [smallint] NULL,
+	[id_koszty_ogolne] [bigint] IDENTITY(1,1) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[grupa] [smallint] NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[log_rysunki]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[log_rysunki](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[rys_label] [varchar](19) NOT NULL,
+	[nazwa_rysunku] [varchar](max) NOT NULL,
+	[numer_rys] [int] NULL,
+	[rodzaj_rys] [varchar](19) NOT NULL,
+	[il_sztuk] [int] NOT NULL,
+	[czas_projektowania] [real] NULL,
+	[data] [date] NULL,
+	[komentarz] [varchar](max) NULL,
+	[ilosc_a1] [real] NOT NULL,
+	[nr_edycji] [int] NOT NULL,
+	[min_maks_nr] [varchar](max) NULL,
+	[osobaodp] [varchar](max) NOT NULL,
+	[data_wpl] [date] NULL,
+	[id_kontrakt] [bigint] NULL,
+	[wielokrotny] [int] NULL,
+	[wieloczesc] [int] NULL,
+	[kolejny_rys] [int] NULL,
+	[wsp_korekcji] [float] NULL,
+	[wykonczenie] [varchar](30) NULL,
+	[podzespol] [smallint] NULL,
+	[rodz_kooperacji] [smallint] NULL,
+	[gotowe] [bit] NULL,
+	[zrobione] [int] NULL,
+	[rozliczone] [int] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [datetime2](7) NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[arkusz] [int] NOT NULL,
+	[rys_id] [bigint] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[logi]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[logi](
+	[uzytkownik] [varchar](20) NULL,
+	[login_time] [varchar](max) NULL,
+	[log_out_time] [varchar](max) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[logi_danych]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[logi_danych](
+	[ld_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[ld_czas] [datetime2](7) NULL,
+	[ld_user] [varchar](100) NOT NULL,
+	[ld_zdarzenie] [varchar](max) NULL,
+	[id_zespol] [bigint] NULL,
+	[numer] [varchar](100) NULL,
+	[ld_element] [varchar](100) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[magazyn_normalia]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[magazyn_normalia](
+	[id_magazyn_normalia] [bigint] IDENTITY(1,1) NOT NULL,
+	[nazwa] [varchar](100) NOT NULL,
+	[dostawca] [varchar](100) NULL,
+	[symbol] [varchar](100) NULL,
+	[koszt_jednostkowy] [float] NULL,
+	[ilosc_sztuk] [smallint] NOT NULL,
+	[koszt_calkowity] [float] NULL,
+	[opis] [varchar](max) NULL,
+	[uzytkownik_zmieniajacy] [varchar](50) NULL,
+	[zesp_label] [varchar](10) NULL,
+	[numer] [int] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[id_branza] [bigint] NULL,
+	[id_subbranza] [bigint] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[material]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[material](
+	[nazwa] [varchar](20) NOT NULL,
+	[masa] [float] NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[miesiace]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[miesiace](
+	[numer] [int] NOT NULL,
+	[nazwa] [varchar](20) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[normalia]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[normalia](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_rysunki] [bigint] NULL,
+	[numer] [int] NOT NULL,
+	[nazwa] [varchar](max) NOT NULL,
+	[ilosc_sztuk] [int] NOT NULL,
+	[opis] [varchar](max) NULL,
+	[edycja] [varchar](max) NULL,
+	[cena] [float] NULL,
+	[kosztcalkowity] [float] NULL,
+	[dostawca] [varchar](max) NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[cena_rozl] [float] NULL,
+	[rozliczony] [bit] NULL,
+	[stan_czesci] [int] NULL,
+	[symbol] [varchar](200) NULL,
+	[data_dostawy] [date] NULL,
+	[status] [int] NULL,
+	[data_zaplaty] [date] NULL,
+	[uzytkownik_zmieniajacy] [varchar](50) NULL,
+	[forma_zaplaty] [int] NULL,
+	[termin_platnosci] [int] NULL,
+	[przelew] [float] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[branza] [varchar](30) NULL,
+	[subbranza] [varchar](30) NULL,
+	[il_z_magazynu] [int] NULL,
+	[tymczasowa] [bit] NULL,
+	[data_wpl] [date] NULL,
+	[faktura] [varchar](50) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[normalia2]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[normalia2](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_rysunki] [bigint] NULL,
+	[numer] [int] NOT NULL,
+	[nazwa] [varchar](max) NOT NULL,
+	[ilosc_sztuk] [int] NOT NULL,
+	[opis] [varchar](max) NULL,
+	[edycja] [varchar](max) NULL,
+	[cena] [float] NULL,
+	[kosztcalkowity] [float] NULL,
+	[dostawca] [varchar](max) NULL,
+	[id_kontrakt] [int] NOT NULL,
+	[id_zespol] [int] NOT NULL,
+	[cena_rozl] [float] NULL,
+	[rozliczony] [bit] NULL,
+	[stan_czesci] [int] NULL,
+	[symbol] [varchar](200) NULL,
+	[data_dostawy] [date] NULL,
+	[status] [int] NULL,
+	[data_zaplaty] [date] NULL,
+	[uzytkownik_zmieniajacy] [varchar](50) NULL,
+	[forma_zaplaty] [int] NULL,
+	[termin_platnosci] [int] NULL,
+	[przelew] [float] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[branza] [varchar](30) NULL,
+	[subbranza] [varchar](30) NULL,
+	[il_z_magazynu] [int] NULL,
+	[tymczasowa] [bit] NULL,
+	[data_wpl] [date] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[of_efekt]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[of_efekt](
+	[id_of_efekt] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_oferta] [bigint] NOT NULL,
+	[id_zespol] [bigint] NULL,
+	[el_kalkulacji] [varchar](max) NULL,
+	[wykonawca] [varchar](max) NULL,
+	[of_ciez] [numeric](10, 2) NULL,
+	[of_wartosc] [numeric](10, 2) NULL,
+	[flaga1] [int] NULL,
+	[flaga2] [int] NULL,
+	[flaga3] [varchar](max) NULL,
+	[flagatyp] [int] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[obiekt] [varchar](max) NULL,
+	[of_wsp_ryzyka] [numeric](10, 2) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[of_zespoly]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[of_zespoly](
+	[of_zesp_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_oferta] [bigint] NOT NULL,
+	[numer] [int] NOT NULL,
+	[of_zesp_label] [varchar](9) NOT NULL,
+	[of_nazwa_zespolu] [varchar](max) NOT NULL,
+	[opis1] [varchar](max) NULL,
+	[opis2] [varchar](max) NULL,
+	[opis3] [varchar](max) NULL,
+	[opis4] [varchar](max) NULL,
+	[opis5] [varchar](max) NULL,
+	[kategoria] [varchar](max) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[oferta_zespoly]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[oferta_zespoly](
+	[ofz_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[numer] [int] NOT NULL,
+	[zesp_label] [varchar](9) NOT NULL,
+	[nazwa_zespolu] [varchar](max) NOT NULL,
+	[opis1] [varchar](max) NULL,
+	[opis2] [varchar](max) NULL,
+	[opis3] [varchar](max) NULL,
+	[opis4] [varchar](max) NULL,
+	[opis5] [varchar](max) NULL,
+	[kategoria] [varchar](max) NULL,
+	[procent_wyplaty] [numeric](4, 1) NULL,
+	[zatwierdzony] [bit] NULL,
+	[data1raty] [date] NULL,
+	[rata1] [numeric](10, 2) NULL,
+	[data2raty] [date] NULL,
+	[rata2] [numeric](10, 2) NULL,
+	[databledu] [date] NULL,
+	[bledy] [numeric](10, 2) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[proj_wiodacy] [varchar](50) NULL,
+	[cena_stali] [numeric](5, 2) NULL,
+	[termin_wykonania] [date] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[ofertowanie]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ofertowanie](
+	[id_oferta] [bigint] IDENTITY(1,1) NOT NULL,
+	[of_znak] [varchar](5) NOT NULL,
+	[of_numer] [int] NOT NULL,
+	[of_nrlabel] [varchar](12) NULL,
+	[of_temat] [varchar](max) NULL,
+	[of_data] [date] NULL,
+	[of_datastop] [date] NULL,
+	[of_osobaodp] [varchar](max) NULL,
+	[of_info] [varchar](max) NULL,
+	[of_wartosc] [numeric](10, 2) NULL,
+	[of_nrfaktury] [varchar](max) NULL,
+	[of_konieckontr] [int] NOT NULL,
+	[of_kosztrbg] [numeric](8, 2) NULL,
+	[of_kosztproj] [numeric](8, 2) NULL,
+	[of_zleu] [numeric](4, 2) NULL,
+	[of_procent_wyplaty] [bigint] NULL,
+	[of_data_przeliczenia] [date] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[of_katalog] [varchar](100) NULL,
+	[of_wartosc_euro] [numeric](10, 2) NULL,
+	[of_cena_stali] [numeric](5, 2) NULL,
+	[of_koszt_bledu] [numeric](5, 2) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[operacje]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[operacje](
+	[znak] [varchar](2) NOT NULL,
+	[op_nazwa] [varchar](max) NOT NULL,
+	[grupa] [varchar](2) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[opisy]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[opisy](
+	[id_opisy] [bigint] NOT NULL,
+	[nazwa] [varchar](30) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[opisy_koop]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[opisy_koop](
+	[id_opisy_koop] [bigint] NOT NULL,
+	[nazwa] [varchar](300) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[piaskowanie]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[piaskowanie](
+	[id_kontrakt] [bigint] NOT NULL,
+	[numer] [varchar](100) NULL,
+	[firma] [varchar](50) NULL,
+	[kwota] [numeric](10, 2) NULL,
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[postac_wsadu]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[postac_wsadu](
+	[wsad] [varchar](50) NOT NULL,
+	[wzor] [varchar](40) NOT NULL,
+	[pole_a] [bit] NULL,
+	[pole_b] [bit] NULL,
+	[pole_c] [bit] NULL,
+	[mj_pole_a] [bit] NULL,
+	[cb_a] [varchar](20) NULL,
+	[cb_b] [varchar](20) NULL,
+	[cb_c] [varchar](20) NULL,
+	[mj_a] [bit] NULL,
+	[mj_b] [bit] NULL,
+	[mj_c] [bit] NULL,
+	[opis_a] [varchar](40) NULL,
+	[opis_b] [varchar](40) NULL,
+	[opis_c] [varchar](40) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[pracownicy]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[pracownicy](
+	[nazwisko] [varchar](1) NOT NULL,
+	[grupa_zaw] [varchar](2) NOT NULL,
+	[stawka] [float] NULL,
+	[info] [varchar](max) NULL,
+	[miejsce_p] [bigint] NULL,
+	[status] [smallint] NULL,
+	[id_pracownik] [bigint] NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[user_name] [varchar](50) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[prawa]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[prawa](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[uzytkownik] [varchar](50) NOT NULL,
+	[caption] [varchar](50) NULL,
+	[val1] [smallint] NULL,
+	[val2] [varchar](100) NULL,
+	[val3] [varchar](100) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[procedurySQL]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[procedurySQL](
+	[idprocedurySql] [bigint] IDENTITY(1,1) NOT NULL,
+	[nazwa_grupy] [varchar](40) NULL,
+	[nazwa_obiektu] [varchar](30) NULL,
+	[nazwa_elementu] [varchar](30) NULL,
+	[cialo] [varchar](max) NULL,
+	[modul] [varchar](30) NULL,
+	[parametr] [varchar](30) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[projektanci_sumy]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[projektanci_sumy](
+	[idprojektancisumy] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [bigint] NULL,
+	[id_zespol] [bigint] NULL,
+	[zesp_label] [varchar](8) NULL,
+	[projektant] [varchar](50) NULL,
+	[naleznosci] [numeric](10, 2) NULL,
+	[data1raty] [date] NULL,
+	[rata1] [numeric](10, 2) NULL,
+	[data2raty] [date] NULL,
+	[rata2] [numeric](10, 2) NULL,
+	[databledu] [date] NULL,
+	[bledy] [numeric](10, 2) NULL,
+	[kontr_label] [varchar](150) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[przyczyna]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[przyczyna](
+	[znak] [varchar](2) NOT NULL,
+	[pr_nazwa] [varchar](max) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[r_plan_temp]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[r_plan_temp](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [int] NOT NULL,
+	[id_zespol] [int] NOT NULL,
+	[id_rysunek] [int] NULL,
+	[id_detal] [int] NULL,
+	[data_wydania] [date] NULL,
+	[wykonanie] [bit] NULL,
+	[kooperant] [varchar](max) NULL,
+	[znak_grupy] [varchar](10) NOT NULL,
+	[znak_operacji] [varchar](10) NOT NULL,
+	[planowana] [float] NULL,
+	[uwagi] [varchar](max) NULL,
+	[kolejnosc_nstd] [int] NULL,
+	[wykonczenie] [varchar](max) NULL,
+	[cena_kooperacji] [numeric](10, 2) NULL,
+	[il_sztuk] [smallint] NULL,
+	[opis_operacji] [varchar](80) NULL,
+	[klucz_obj] [varchar](10) NULL,
+	[zrobione] [smallint] NULL,
+	[data_wydruku] [date] NULL,
+	[bufor_plan] [float] NULL,
+	[przewodnik] [bigint] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[filtr] [bit] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[raport_produkcja]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[raport_produkcja](
+	[lm_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[blat] [bigint] NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[id_rysunki] [bigint] NOT NULL,
+	[projektant] [varchar](50) NULL,
+	[wydany] [date] NULL,
+	[rys_label] [varchar](50) NULL,
+	[nr_rysunku] [varchar](50) NULL,
+	[nazwa_elementu] [varchar](100) NULL,
+	[od_do] [varchar](20) NULL,
+	[rodzaj_rys] [varchar](30) NULL,
+	[il_sztuk] [bigint] NULL,
+	[planowana_data] [date] NULL,
+	[pociety] [bigint] NULL,
+	[data_pociecia] [date] NULL,
+	[kooperacja_zamowienie] [numeric](15, 2) NULL,
+	[kooperacja_dostawa] [numeric](15, 2) NULL,
+	[gotowe] [bigint] NULL,
+	[termin_wykonania] [date] NULL,
+	[koszt_jednostkowy] [numeric](10, 2) NULL,
+	[koszt_calkowity] [numeric](10, 2) NULL,
+	[robocizna] [numeric](15, 2) NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[rbac_uzytkownicy_uprawnienia]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[rbac_uzytkownicy_uprawnienia](
+	[up_pk] [bigint] NOT NULL,
+	[uz_pk] [bigint] NOT NULL,
+	[up_ua_pk] [bigint] NOT NULL,
+	[up_akcja] [numeric](38, 0) NULL,
+	[up_ograniczenia] [numeric](38, 0) NULL,
+	[up_dane_dodatkowe] [varchar](254) NULL,
+	[up_audit_aplikacji] [char](1) NULL,
+	[up_audit_danych] [char](1) NULL,
+	[up_data_od] [datetime2](7) NULL,
+	[up_data_do] [datetime2](7) NULL,
+	[up_data_akt] [datetime2](7) NULL,
+	[up_utworzony_przez] [numeric](38, 0) NULL,
+	[up_data_utworzenia] [datetime2](7) NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[robocizna_wykonana]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[robocizna_wykonana](
+	[id] [bigint] NOT NULL,
+	[id_kontrakt] [bigint] NULL,
+	[id_zespol] [bigint] NULL,
+	[id_rysunek] [bigint] NULL,
+	[id_detal] [bigint] NULL,
+	[id_robplan] [bigint] NULL,
+	[pracownik] [varchar](40) NOT NULL,
+	[wykonana] [float] NOT NULL,
+	[data_wpl] [date] NULL,
+	[uwagi] [varchar](max) NULL,
+	[zatwierdzil] [varchar](max) NOT NULL,
+	[znak_operacji] [varchar](2) NULL,
+	[przyczyna] [varchar](100) NULL,
+	[status] [varchar](3) NULL,
+	[klucz_obj] [varchar](10) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[robocizna_wykonana_temp]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[robocizna_wykonana_temp](
+	[id] [bigint] NULL,
+	[id_kontrakt] [bigint] NULL,
+	[id_zespol] [bigint] NULL,
+	[id_rysunek] [bigint] NULL,
+	[id_detal] [bigint] NULL,
+	[id_robplan] [bigint] NULL,
+	[pracownik] [varchar](40) NOT NULL,
+	[wykonana] [float] NOT NULL,
+	[data_wpl] [date] NULL,
+	[uwagi] [varchar](max) NULL,
+	[zatwierdzil] [varchar](max) NOT NULL,
+	[znak_operacji] [varchar](2) NULL,
+	[przyczyna] [varchar](100) NULL,
+	[status] [varchar](3) NULL,
+	[klucz_obj] [varchar](10) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[rodz_prac]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[rodz_prac](
+	[id_rodz] [bigint] IDENTITY(1,1) NOT NULL,
+	[rodzaj] [varchar](45) NULL,
+	[litera] [varchar](1) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[rodzaj_rys]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[rodzaj_rys](
+	[nazwa] [varchar](max) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[rozliczenie_proj]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[rozliczenie_proj](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[rys_label] [varchar](19) NULL,
+	[opis] [varchar](max) NULL,
+	[projektant] [varchar](150) NULL,
+	[wykonawca] [varchar](120) NULL,
+	[data_wykonania] [date] NULL,
+	[rob_wyk] [float] NULL,
+	[koszt_mat] [numeric](15, 2) NULL,
+	[rozliczona] [bit] NULL,
+	[komentarz] [varchar](max) NULL,
+	[faktura] [varchar](100) NULL,
+	[kooperacja] [numeric](15, 2) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[montaz] [numeric](10, 2) NULL,
+	[arkusz] [bigint] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[rw_detale]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[rw_detale](
+	[id_rw_detale] [bigint] IDENTITY(1,1) NOT NULL,
+	[rw_label] [varchar](15) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[rw_szczegoly]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[rw_szczegoly](
+	[id_rw_szczegoly] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_rw_detale] [bigint] NOT NULL,
+	[id_detale] [bigint] NOT NULL,
+	[data_ciecia] [date] NULL,
+	[kolejnosc_rw] [smallint] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[rysunki]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[rysunki](
+	[id_rysunki] [bigint] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_rysunki] PRIMARY KEY CLUSTERED 
+(
+	[id_rysunki] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[rysunki2]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[rysunki2](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_zespol] [bigint] NOT NULL,
+	[rys_label] [varchar](19) NOT NULL,
+	[nazwa_rysunku] [varchar](max) NOT NULL,
+	[numer_rys] [int] NULL,
+	[rodzaj_rys] [varchar](19) NOT NULL,
+	[il_sztuk] [int] NOT NULL,
+	[czas_projektowania] [real] NULL,
+	[data] [date] NULL,
+	[komentarz] [varchar](max) NULL,
+	[ilosc_a1] [real] NOT NULL,
+	[nr_edycji] [int] NOT NULL,
+	[min_maks_nr] [varchar](max) NULL,
+	[osobaodp] [varchar](max) NULL,
+	[data_wpl] [date] NULL,
+	[id_kontrakt] [int] NULL,
+	[wielokrotny] [int] NULL,
+	[wieloczesc] [int] NULL,
+	[kolejny_rys] [int] NULL,
+	[wsp_korekcji] [float] NULL,
+	[wykonczenie] [varchar](30) NULL,
+	[podzespol] [smallint] NULL,
+	[rodz_kooperacji] [smallint] NULL,
+	[gotowe] [bit] NULL,
+	[zrobione] [int] NULL,
+	[rozliczone] [int] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[arkusz] [int] NOT NULL,
+	[p1] [varchar](40) NULL,
+	[p2] [varchar](40) NULL,
+	[plik] [varchar](500) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[Sample_Table]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Sample_Table](
+	[fi_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[nazwa] [text] NOT NULL,
+	[przedstawiciel] [text] NULL,
+	[stanowisko] [text] NULL,
+	[ulica] [text] NOT NULL,
+	[nrdomu] [text] NULL,
+	[nrlokalu] [text] NULL,
+	[kodpoczt] [text] NULL,
+	[miasto] [text] NOT NULL,
+	[tel] [text] NULL,
+	[telkom] [text] NULL,
+	[fax] [text] NULL,
+	[email] [text] NULL,
+	[www] [text] NULL,
+	[nip] [text] NULL,
+	[info] [text] NULL,
+	[kraj] [text] NOT NULL,
+	[dostawca] [bit] NULL,
+	[kooperant] [bit] NULL,
+	[odbiorca] [bit] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NULL,
+	[katalog] [varchar](100) NULL,
+	[koopdoc] [bit] NULL,
+ CONSTRAINT [PK_Sample_Table] PRIMARY KEY CLUSTERED 
+(
+	[fi_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[stan_materialu]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[stan_materialu](
+	[stan_m] [varchar](40) NOT NULL,
+	[ikona] [varchar](100) NULL,
+	[klucz_D_C] [int] NULL,
+	[id_stan_materialu] [bigint] IDENTITY(1,1) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[struktura_kontraktu]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[struktura_kontraktu](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[nazwa] [varchar](100) NULL,
+	[rodzaj_objektu] [varchar](10) NULL,
+	[id_obiektu] [bigint] NULL,
+	[zaleznosc_obiektu] [bigint] NULL,
+	[id_kontrakt] [bigint] NULL,
+	[kolejnosc] [bigint] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[sub_branza]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[sub_branza](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[nazwa] [varchar](100) NOT NULL,
+	[id_branza] [bigint] NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[szef_raport]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[szef_raport](
+	[id_kontrakt] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_zespol] [bigint] NULL,
+	[id] [bigint] NULL,
+	[temat] [varchar](max) NULL,
+	[osobaodp] [varchar](max) NULL,
+	[zesp_label] [varchar](1) NULL,
+	[rys_label] [varchar](1) NULL,
+	[nazwa_rysunku] [varchar](max) NULL,
+	[min_maks_nr] [varchar](max) NULL,
+	[il_sztuk] [bigint] NULL,
+	[sumaofplanowana1] [float] NULL,
+	[do_zrobienia] [float] NULL,
+	[zliczony2] [varchar](max) NULL,
+	[stan_materdet] [varchar](max) NULL,
+	[pocietydetal] [varchar](max) NULL,
+	[klucz] [bigint] NOT NULL,
+	[zrobione_j] [bigint] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[rodzaj_rys] [varchar](19) NULL,
+	[blat] [bigint] NULL,
+	[wydany] [date] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[transport]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[transport](
+	[id_kontrakt] [bigint] NOT NULL,
+	[numer] [varchar](100) NULL,
+	[firma] [varchar](50) NULL,
+	[kwota] [numeric](10, 2) NULL,
+	[id] [bigint] NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[opis] [varchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[tree_categories]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tree_categories](
+	[id] [bigint] NOT NULL,
+	[name] [varchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[tree_relations]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tree_relations](
+	[parent_id] [bigint] NOT NULL,
+	[child_id] [bigint] NOT NULL,
+	[depth] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[typy_dokumentow]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[typy_dokumentow](
+	[id_dokument] [bigint] IDENTITY(1,1) NOT NULL,
+	[dokument] [varchar](30) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[uruchomlinii]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[uruchomlinii](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [int] NOT NULL,
+	[numer] [varchar](100) NULL,
+	[osoba] [varchar](50) NULL,
+	[opis] [varchar](max) NULL,
+	[kwota_plan] [numeric](10, 2) NULL,
+	[kwota_rozl] [numeric](10, 2) NULL,
+	[kiedy] [date] NULL,
+	[kto] [varchar](20) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[wersja]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[wersja](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[major] [bigint] NULL,
+	[minor] [bigint] NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[wykonczenie]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[wykonczenie](
+	[id_wykonczenie] [bigint] IDENTITY(1,1) NOT NULL,
+	[nazwa] [varchar](30) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[zakupy_farb]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[zakupy_farb](
+	[id_kontrakt] [bigint] NOT NULL,
+	[numer] [varchar](20) NULL,
+	[tresc] [varchar](100) NULL,
+	[firma] [varchar](50) NULL,
+	[ilosc] [float] NULL,
+	[kwota] [numeric](10, 2) NULL,
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[zarzadzanie_folderami]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[zarzadzanie_folderami](
+	[foldery_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_rodzica] [bigint] NULL,
+	[nazwa_folderu] [varchar](200) NULL,
+	[opis_folderu] [varchar](max) NULL,
+	[dotyczy] [varchar](100) NULL,
+	[grupa] [varchar](100) NULL,
+	[sciezka] [varchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[zespol]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[zespol](
+	[Id_zespol] [bigint] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_zespol] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[zespol_stan]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[zespol_stan](
+	[id_projekt_stan] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [bigint] NULL,
+	[id_zespol] [bigint] NULL,
+	[naleznosci] [numeric](10, 2) NULL,
+	[data1raty] [date] NULL,
+	[rata1] [numeric](10, 2) NULL,
+	[data2raty] [date] NULL,
+	[rata2] [numeric](10, 2) NULL,
+	[databledu] [date] NULL,
+	[bledy] [numeric](10, 2) NULL,
+	[projektant] [varchar](50) NULL,
+	[procent_wyplaty] [numeric](3, 2) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Table [dbo].[zespoly]    Script Date: 2018-11-16 17:57:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[zespoly](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id_kontrakt] [bigint] NOT NULL,
+	[numer] [int] NOT NULL,
+	[zesp_label] [varchar](9) NOT NULL,
+	[nazwa_zespolu] [varchar](max) NOT NULL,
+	[opis1] [varchar](max) NULL,
+	[opis2] [varchar](max) NULL,
+	[opis3] [varchar](max) NULL,
+	[opis4] [varchar](max) NULL,
+	[opis5] [varchar](max) NULL,
+	[kategoria] [varchar](max) NULL,
+	[procent_wyplaty] [numeric](4, 1) NULL,
+	[zatwierdzony] [bit] NULL,
+	[data1raty] [date] NULL,
+	[rata1] [numeric](10, 2) NULL,
+	[data2raty] [date] NULL,
+	[rata2] [numeric](10, 2) NULL,
+	[databledu] [date] NULL,
+	[bledy] [numeric](10, 2) NULL,
+	[ins_data] [date] NULL,
+	[ins_user] [varchar](100) NULL,
+	[upd_data] [date] NULL,
+	[upd_user] [varchar](100) NULL,
+	[del_id] [bigint] NOT NULL,
+	[proj_wiodacy] [varchar](50) NULL,
+	[cena_stali] [numeric](5, 2) NULL,
+	[termin_wykonania] [date] NULL,
+	[typ] [int] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING ON
+GO
+ALTER TABLE [dbo].[biblioteka_czesci] ADD  DEFAULT ((0)) FOR [cena]
+GO
+ALTER TABLE [dbo].[biblioteka_normaliow] ADD  DEFAULT ((0)) FOR [typ_elementu]
+GO
+ALTER TABLE [dbo].[detale] ADD  DEFAULT ((0)) FOR [rozliczony]
+GO
+ALTER TABLE [dbo].[detale] ADD  DEFAULT ((0)) FOR [cena_rozl]
+GO
+ALTER TABLE [dbo].[detale] ADD  DEFAULT ((0)) FOR [stan_materialu]
+GO
+ALTER TABLE [dbo].[detale] ADD  DEFAULT ((0)) FOR [pociety]
+GO
+ALTER TABLE [dbo].[detale] ADD  DEFAULT ((0)) FOR [cena_bufor]
+GO
+ALTER TABLE [dbo].[detale] ADD  DEFAULT ((0)) FOR [rodz_kooperacji]
+GO
+ALTER TABLE [dbo].[detale] ADD  DEFAULT ((0)) FOR [wb_ok]
+GO
+ALTER TABLE [dbo].[doradztwo_nowy] ADD  DEFAULT (CONVERT([date],CONVERT([varchar](max),'now'))) FOR [kiedy]
+GO
+ALTER TABLE [dbo].[historiaZmian] ADD  CONSTRAINT [DF_historiaZmian_dataWpisu]  DEFAULT (getdate()) FOR [dataWpisu]
+GO
+ALTER TABLE [dbo].[kontrakt2] ADD  DEFAULT ((0)) FOR [konieckontr]
+GO
+ALTER TABLE [dbo].[kontrakt2] ADD  DEFAULT ((50)) FOR [procent_wyplaty]
+GO
+ALTER TABLE [dbo].[kontrakt2] ADD  DEFAULT ((0)) FOR [wartosc_euro]
+GO
+ALTER TABLE [dbo].[kontrakt2] ADD  DEFAULT ((42)) FOR [koszt_bledu]
+GO
+ALTER TABLE [dbo].[kontrakt2] ADD  DEFAULT ((0)) FOR [rozliczony_status]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((0)) FOR [cena_zakladana]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((0)) FOR [cena_ofertowa]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((0)) FOR [cena_rozliczeniowa]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((0)) FOR [rozliczona]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((1)) FOR [sztuki]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((0)) FOR [ilroboczogodz]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((0)) FOR [cena_za_szt]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((0)) FOR [wyslano]
+GO
+ALTER TABLE [dbo].[kooperacja2] ADD  DEFAULT ((0)) FOR [wykonano]
+GO
+ALTER TABLE [dbo].[kooperacjadok] ADD  DEFAULT ((0)) FOR [cena_zakladana]
+GO
+ALTER TABLE [dbo].[kooperacjadok] ADD  DEFAULT ((0)) FOR [cena_ofertowa]
+GO
+ALTER TABLE [dbo].[kooperacjadok] ADD  DEFAULT ((0)) FOR [cena_rozliczeniowa]
+GO
+ALTER TABLE [dbo].[kooperacjadok] ADD  DEFAULT ((0)) FOR [rozliczona]
+GO
+ALTER TABLE [dbo].[kooperacjadok] ADD  DEFAULT ((0)) FOR [rata1]
+GO
+ALTER TABLE [dbo].[kooperacjadok] ADD  DEFAULT ((0)) FOR [rata2]
+GO
+ALTER TABLE [dbo].[kooperacjadok] ADD  DEFAULT ((0)) FOR [rata3]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((1)) FOR [il_sztuk]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT (getdate()) FOR [data]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((1)) FOR [ilosc_a1]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((1)) FOR [nr_edycji]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((0)) FOR [wieloczesc]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((0)) FOR [kolejny_rys]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((1)) FOR [wsp_korekcji]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((0)) FOR [podzespol]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((0)) FOR [rodz_kooperacji]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((0)) FOR [gotowe]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((0)) FOR [zrobione]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((0)) FOR [rozliczone]
+GO
+ALTER TABLE [dbo].[log_rysunki] ADD  DEFAULT ((1)) FOR [arkusz]
+GO
+ALTER TABLE [dbo].[logi_danych] ADD  DEFAULT (getdate()) FOR [ld_czas]
+GO
+ALTER TABLE [dbo].[magazyn_normalia] ADD  DEFAULT ((1)) FOR [ilosc_sztuk]
+GO
+ALTER TABLE [dbo].[normalia] ADD  DEFAULT ((0)) FOR [cena_rozl]
+GO
+ALTER TABLE [dbo].[normalia] ADD  DEFAULT ((0)) FOR [rozliczony]
+GO
+ALTER TABLE [dbo].[normalia] ADD  DEFAULT ((0)) FOR [stan_czesci]
+GO
+ALTER TABLE [dbo].[normalia] ADD  DEFAULT ((0)) FOR [status]
+GO
+ALTER TABLE [dbo].[normalia] ADD  DEFAULT ((0)) FOR [il_z_magazynu]
+GO
+ALTER TABLE [dbo].[normalia2] ADD  DEFAULT ((0)) FOR [cena_rozl]
+GO
+ALTER TABLE [dbo].[normalia2] ADD  DEFAULT ((0)) FOR [rozliczony]
+GO
+ALTER TABLE [dbo].[normalia2] ADD  DEFAULT ((0)) FOR [stan_czesci]
+GO
+ALTER TABLE [dbo].[normalia2] ADD  DEFAULT ((0)) FOR [status]
+GO
+ALTER TABLE [dbo].[normalia2] ADD  DEFAULT ((0)) FOR [il_z_magazynu]
+GO
+ALTER TABLE [dbo].[of_efekt] ADD  DEFAULT ('INMET') FOR [wykonawca]
+GO
+ALTER TABLE [dbo].[oferta_zespoly] ADD  DEFAULT ((0)) FOR [procent_wyplaty]
+GO
+ALTER TABLE [dbo].[oferta_zespoly] ADD  DEFAULT ((0)) FOR [zatwierdzony]
+GO
+ALTER TABLE [dbo].[oferta_zespoly] ADD  DEFAULT ((0)) FOR [rata1]
+GO
+ALTER TABLE [dbo].[oferta_zespoly] ADD  DEFAULT ((0)) FOR [rata2]
+GO
+ALTER TABLE [dbo].[oferta_zespoly] ADD  DEFAULT ((0)) FOR [bledy]
+GO
+ALTER TABLE [dbo].[oferta_zespoly] ADD  DEFAULT ((3.5)) FOR [cena_stali]
+GO
+ALTER TABLE [dbo].[ofertowanie] ADD  DEFAULT ((0)) FOR [of_konieckontr]
+GO
+ALTER TABLE [dbo].[ofertowanie] ADD  DEFAULT ((50)) FOR [of_procent_wyplaty]
+GO
+ALTER TABLE [dbo].[ofertowanie] ADD  DEFAULT ((0)) FOR [of_wartosc_euro]
+GO
+ALTER TABLE [dbo].[ofertowanie] ADD  DEFAULT ((42)) FOR [of_koszt_bledu]
+GO
+ALTER TABLE [dbo].[postac_wsadu] ADD  DEFAULT ((1)) FOR [mj_a]
+GO
+ALTER TABLE [dbo].[postac_wsadu] ADD  DEFAULT ((1)) FOR [mj_b]
+GO
+ALTER TABLE [dbo].[postac_wsadu] ADD  DEFAULT ((1)) FOR [mj_c]
+GO
+ALTER TABLE [dbo].[pracownicy] ADD  DEFAULT ((1)) FOR [status]
+GO
+ALTER TABLE [dbo].[r_plan_temp] ADD  DEFAULT (CONVERT([date],CONVERT([varchar](max),'now'))) FOR [data_wydania]
+GO
+ALTER TABLE [dbo].[r_plan_temp] ADD  DEFAULT ((0)) FOR [wykonanie]
+GO
+ALTER TABLE [dbo].[r_plan_temp] ADD  DEFAULT (CONVERT([varchar](max),' ')) FOR [kooperant]
+GO
+ALTER TABLE [dbo].[r_plan_temp] ADD  DEFAULT (CONVERT([float],(0))) FOR [planowana]
+GO
+ALTER TABLE [dbo].[r_plan_temp] ADD  DEFAULT ((0)) FOR [zrobione]
+GO
+ALTER TABLE [dbo].[r_plan_temp] ADD  DEFAULT ((0)) FOR [bufor_plan]
+GO
+ALTER TABLE [dbo].[rbac_uzytkownicy_uprawnienia] ADD  DEFAULT (getdate()) FOR [up_data_utworzenia]
+GO
+ALTER TABLE [dbo].[robocizna_wykonana] ADD  DEFAULT (getdate()) FOR [data_wpl]
+GO
+ALTER TABLE [dbo].[robocizna_wykonana] ADD  DEFAULT ('BR') FOR [znak_operacji]
+GO
+ALTER TABLE [dbo].[robocizna_wykonana] ADD  DEFAULT ('BR') FOR [przyczyna]
+GO
+ALTER TABLE [dbo].[robocizna_wykonana_temp] ADD  DEFAULT (getdate()) FOR [data_wpl]
+GO
+ALTER TABLE [dbo].[robocizna_wykonana_temp] ADD  DEFAULT ('BR') FOR [znak_operacji]
+GO
+ALTER TABLE [dbo].[robocizna_wykonana_temp] ADD  DEFAULT ('BR') FOR [przyczyna]
+GO
+ALTER TABLE [dbo].[rozliczenie_proj] ADD  DEFAULT ((0)) FOR [rob_wyk]
+GO
+ALTER TABLE [dbo].[rozliczenie_proj] ADD  DEFAULT ((0)) FOR [koszt_mat]
+GO
+ALTER TABLE [dbo].[rozliczenie_proj] ADD  DEFAULT ((0)) FOR [rozliczona]
+GO
+ALTER TABLE [dbo].[rozliczenie_proj] ADD  DEFAULT ((0)) FOR [kooperacja]
+GO
+ALTER TABLE [dbo].[rozliczenie_proj] ADD  DEFAULT ((0)) FOR [montaz]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((1)) FOR [il_sztuk]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((1)) FOR [ilosc_a1]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((1)) FOR [nr_edycji]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((0)) FOR [wieloczesc]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((0)) FOR [kolejny_rys]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((1)) FOR [wsp_korekcji]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((0)) FOR [podzespol]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((0)) FOR [rodz_kooperacji]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((0)) FOR [zrobione]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((0)) FOR [rozliczone]
+GO
+ALTER TABLE [dbo].[rysunki2] ADD  DEFAULT ((1)) FOR [arkusz]
+GO
+ALTER TABLE [dbo].[uruchomlinii] ADD  DEFAULT (getdate()) FOR [kiedy]
+GO
+ALTER TABLE [dbo].[zespol_stan] ADD  DEFAULT ((70)) FOR [procent_wyplaty]
+GO
+ALTER TABLE [dbo].[zespoly] ADD  DEFAULT ((0)) FOR [procent_wyplaty]
+GO
+ALTER TABLE [dbo].[zespoly] ADD  DEFAULT ((0)) FOR [zatwierdzony]
+GO
+ALTER TABLE [dbo].[zespoly] ADD  DEFAULT ((0)) FOR [rata1]
+GO
+ALTER TABLE [dbo].[zespoly] ADD  DEFAULT ((0)) FOR [rata2]
+GO
+ALTER TABLE [dbo].[zespoly] ADD  DEFAULT ((0)) FOR [bledy]
+GO
+ALTER TABLE [dbo].[zespoly] ADD  DEFAULT ((3.5)) FOR [cena_stali]
+GO
+ALTER TABLE [dbo].[AspNetRoleClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetRoleClaims] CHECK CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId]
+GO
+ALTER TABLE [dbo].[AspNetRolesRules]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRolesRules_AspNetRoles] FOREIGN KEY([id_role])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetRolesRules] CHECK CONSTRAINT [FK_AspNetRolesRules_AspNetRoles]
+GO
+ALTER TABLE [dbo].[AspNetRolesRules]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRolesRules_AspNetRule] FOREIGN KEY([id_rule])
+REFERENCES [dbo].[AspNetRule] ([id_rule])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetRolesRules] CHECK CONSTRAINT [FK_AspNetRolesRules_AspNetRule]
+GO
+ALTER TABLE [dbo].[AspNetRuleUser]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRuleUser_AspNetRule] FOREIGN KEY([id_rule])
+REFERENCES [dbo].[AspNetRule] ([id_rule])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetRuleUser] CHECK CONSTRAINT [FK_AspNetRuleUser_AspNetRule]
+GO
+ALTER TABLE [dbo].[AspNetRuleUser]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRuleUser_AspNetUsers] FOREIGN KEY([id_user])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetRuleUser] CHECK CONSTRAINT [FK_AspNetRuleUser_AspNetUsers]
+GO
+ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserTokens]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[dostawcy]  WITH CHECK ADD  CONSTRAINT [FK_dostawcy_AspNetRoles] FOREIGN KEY([id_dostemp])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[dostawcy] CHECK CONSTRAINT [FK_dostawcy_AspNetRoles]
+GO
+ALTER TABLE [dbo].[dostawcyHistoria]  WITH CHECK ADD  CONSTRAINT [FK_dostawcyHistoria_AspNetUsers] FOREIGN KEY([id_user])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+GO
+ALTER TABLE [dbo].[dostawcyHistoria] CHECK CONSTRAINT [FK_dostawcyHistoria_AspNetUsers]
+GO
+ALTER TABLE [dbo].[dostawcyHistoria]  WITH CHECK ADD  CONSTRAINT [FK_dostawcyHistoria_dostawcy] FOREIGN KEY([id_dostawcy])
+REFERENCES [dbo].[dostawcy] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[dostawcyHistoria] CHECK CONSTRAINT [FK_dostawcyHistoria_dostawcy]
+GO
+ALTER TABLE [dbo].[drzewo]  WITH CHECK ADD  CONSTRAINT [FK_drzewo_drzewo] FOREIGN KEY([dr_parent_id])
+REFERENCES [dbo].[drzewo] ([dr_id])
+GO
+ALTER TABLE [dbo].[drzewo] CHECK CONSTRAINT [FK_drzewo_drzewo]
+GO
+ALTER TABLE [dbo].[historiaZmian]  WITH CHECK ADD  CONSTRAINT [FK_historiaZmian_AspNetUsers] FOREIGN KEY([id_user])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON UPDATE CASCADE
+ON DELETE SET NULL
+GO
+ALTER TABLE [dbo].[historiaZmian] CHECK CONSTRAINT [FK_historiaZmian_AspNetUsers]
+GO
+USE [master]
+GO
+ALTER DATABASE [baza_szkola] SET  READ_WRITE 
+GO
