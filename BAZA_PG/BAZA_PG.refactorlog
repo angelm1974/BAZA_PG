@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ff469e0b-9850-4a04-8ffc-6c4c17bff635" ChangeDateTime="10/19/2018 13:10:52">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="bc_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d7679f7b-7a5d-422d-82be-a5af63a667fc" ChangeDateTime="10/19/2018 13:26:34">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c5af681a-e3a6-47e9-a8eb-efa52a223dab" ChangeDateTime="10/19/2018 13:26:48">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[dr]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b26b776-87ba-4fc3-8c91-d299aa9b609c" ChangeDateTime="10/19/2018 13:27:33">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[bc_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="de_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b492d2d-2f05-4194-8283-4fe652f8c914" ChangeDateTime="10/19/2018 13:32:21">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[de_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cz_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0472f996-9a5d-46b2-aab1-90f63e4af587" ChangeDateTime="10/19/2018 13:32:36">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[tabela]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="tabcz_lbl_element" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="061345bf-7dcb-4288-a904-b4104b29a2e3" ChangeDateTime="10/19/2018 13:32:48">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[id_tabeli]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cz_nazwa" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="43232898-69a7-498a-acab-e554522e78f2" ChangeDateTime="10/19/2018 13:32:59">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[data_kasowania]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cz_ilszt" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f712da6b-cff3-4178-a8a5-00ca179032f5" ChangeDateTime="10/19/2018 13:33:11">
+    <Property Name="ElementName" Value="[dbo].[biblioteka_czesci].[skasowal]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[biblioteka_czesci]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="cz_wartosc" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b6af709b-5b0d-4786-9f6a-e1df34c2894f" ChangeDateTime="10/19/2018 13:49:18">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[  dr_lbl_element]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr_lbl_element" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9e0f78d0-d4f9-4f41-9843-7c0a1427af2b" ChangeDateTime="10/19/2018 13:49:21">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[ dr_nazwa]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr_nazwa" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b2654164-706e-4f1f-81d9-ded5df6ece52" ChangeDateTime="10/19/2018 13:49:25">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[ id_kontrakt]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_kontrakt" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b2319334-5f35-453d-b02a-c6dc31e55e1c" ChangeDateTime="10/19/2018 13:49:28">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[ id_zespol]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_zespol" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b96dcaf1-38eb-40ce-b36c-c6fb1a2e4dcf" ChangeDateTime="10/19/2018 13:49:31">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[ id_detale]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_detale" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b0cdd7d3-7f29-4f87-8ed3-a88ee95a4357" ChangeDateTime="10/19/2018 13:49:35">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[  dr_tag]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr_tag" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8f9cbecc-00eb-4f95-ac7c-035943ad0c88" ChangeDateTime="10/19/2018 13:49:41">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[ dr_ilszt]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr_ilszt" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="52a0f700-3443-496e-b296-6f0ee4d6ae29" ChangeDateTime="10/19/2018 13:49:49">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[ dr_parent_id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr_parent_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a2934cdb-2036-49c9-be6d-c50e81299a87" ChangeDateTime="10/19/2018 13:51:29">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[  dr_tag]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr_tag" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b963576b-26b7-420f-94ba-3af9f4a1d2f3" ChangeDateTime="10/19/2018 14:01:15">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[id_dr_parent_id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dr_parent_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8f823e51-3b93-4bd4-b830-46d9f5f9fc34" ChangeDateTime="10/19/2018 14:01:20">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[dr_lbl_element]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="bl_element" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="60054f2f-76e1-445c-8f00-d8b074950494" ChangeDateTime="10/19/2018 14:01:27">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[dr_nazwa]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="nazwa" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1258b1c4-c4b6-45b6-904f-ff1ada2c9d71" ChangeDateTime="10/19/2018 14:01:36">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[id_kontrakt]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ko_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e50fcfee-5803-460e-a055-80b48993aa12" ChangeDateTime="10/19/2018 14:01:41">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[id_zespol]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ze_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b1436917-e592-465e-8a6f-e829d2790640" ChangeDateTime="10/19/2018 14:01:47">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[id_rysunki]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ry_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="78992b80-41f3-4f41-a5ba-317a10a219e6" ChangeDateTime="10/19/2018 14:01:51">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[id_detale]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="de_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="455f74f4-0de0-445f-9849-c20e5df3fe3c" ChangeDateTime="10/19/2018 14:01:57">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[dr_tag]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="tag" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c11655b0-7476-4f41-9e53-7d10f84c83bc" ChangeDateTime="10/19/2018 14:02:05">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[dr_ikona ]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ikona" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d67b5876-73eb-4fbb-a686-cd32f2bbecf5" ChangeDateTime="10/19/2018 14:02:10">
+    <Property Name="ElementName" Value="[dbo].[drzewo].[dr_ilszt]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[drzewo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ilsztk" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1fe4b62d-1851-4b4c-b82b-7e04ff08a94f" ChangeDateTime="11/15/2018 11:52:37">
+    <Property Name="ElementName" Value="[dbo].[Kontrakt].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Kontrakt]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_kontrakt" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2721285e-283a-4ea0-9c6a-5b1525342f9c" ChangeDateTime="11/15/2018 11:58:01">
+    <Property Name="ElementName" Value="[dbo].[Rysunki].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Rysunki]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_rysunki" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="eb3426d1-f081-407c-b440-073179778042" ChangeDateTime="11/15/2018 12:06:43">
+    <Property Name="ElementName" Value="[dbo].[zespol].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[zespol]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_zespol" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="63d981ed-d8a8-4093-abd9-06c2ec1a8b4a" ChangeDateTime="11/15/2018 12:34:19">
+    <Property Name="ElementName" Value="[dbo].[sub_branza].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[sub_branza]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="sb_id" />
+  </Operation>
+</Operations>
